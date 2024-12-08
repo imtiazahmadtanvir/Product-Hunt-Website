@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import bannerShadow from '../assets/bg-shadow.png'
 import bannerImage from '../assets/banner-main.png'
 
-const Banner = ({handleCredit}) => {
+const Banner = ({HandleCredit}) => {
     const totalCredit = 1000000;
 
     return (
@@ -21,7 +22,7 @@ const Banner = ({handleCredit}) => {
                         Beyond Boundaries Beyond Limits
                     </p>
                     <div className=' sm:w-1/5 mx-auto border border-[#e7fe29] rounded-2xl p-2'>
-                        <button onClick={() => handleCredit(totalCredit)} className="w-full btn bg-[#E7FE29] text-black font-bold border-none">Claim Free Credit</button>
+                        <button onClick={() => HandleCredit(totalCredit)} className="w-full btn bg-[#E7FE29] text-black font-bold border-none">Claim Free Credit</button>
                     </div>
                 </div>
             </div>
