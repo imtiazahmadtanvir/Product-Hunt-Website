@@ -1,9 +1,10 @@
 # BPL-DREAM 11
-# Live URL - 
+## Live URL - 
 # Project Description
-    BPL-DREAM 11 is a dynamic and interactive React-based web application designed for cricket enthusiasts. This application allows users to build their dream cricket team, manage a team budget, and view detailed player profiles. Featuring a responsive user interface inspired by a Figma design, BPL-DREAM 11 ensures a seamless and enjoyable experience for users. The app utilizes JSON data to display player information and includes advanced features for intuitive team management.
 
-# Technologies Used
+BPL-DREAM 11 is a dynamic and interactive React-based web application designed for cricket enthusiasts. This application allows users to build their dream cricket team, manage a team budget, and view detailed player profiles. Featuring a responsive user interface inspired by a Figma design, BPL-DREAM 11 ensures a seamless and enjoyable experience for users. The app utilizes JSON data to display player information and includes advanced features for intuitive team management.
+
+## Technologies Used
 -React.js: For creating the dynamic and interactive user interface.
 
 -Tailwind CSS: For modern and responsive styling.
@@ -14,9 +15,9 @@
 
 -Vite: For fast and efficient project building and development..
 
-## Key Features
+# Key Features
 
-# Player Management
+## Player Management
 
 -Selection & Management: Users can select and manage their players for the team.
 
@@ -24,7 +25,7 @@
 
 -Availability Toggles: Track which players are already selected and available for selection.
 
-# Intuitive UI Components
+## Intuitive UI Components
 
 -Navigation: Seamless navigation between available and selected players using intuitive buttons.
 
