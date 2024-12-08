@@ -1,0 +1,222 @@
+[
+    {
+        "player_id": "PLR001",
+        "name": "Virat Kohli",
+        "profile_image": "./pictures/virat-kohli.webp",
+        "region": "India",
+        "playing_role": "Batsman",
+        "icc_rating": 857,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Medium",
+        "price": 105000
+    },
+    {
+        "player_id": "PLR002",
+        "name": "Babar Azam",
+        "profile_image": "./pictures/babar-azam.webp",
+        "region": "Pakistan",
+        "playing_role": "Batsman",
+        "icc_rating": 829,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Off-break",
+        "price": 82000
+    },
+    {
+        "player_id": "PLR003",
+        "name": "Kane Williamson",
+        "profile_image": "./pictures/kane-williamson.webp",
+        "region": "New Zealand",
+        "playing_role": "Batsman",
+        "icc_rating": 812,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Off-break",
+        "price": 78000
+    },
+    {
+        "player_id": "PLR004",
+        "name": "Steve Smith",
+        "profile_image": "./pictures/smith.webp",
+        "region": "Australia",
+        "playing_role": "Batsman",
+        "icc_rating": 845,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Leg-break",
+        "price": 91000
+    },
+    {
+        "player_id": "PLR005",
+        "name": "Pat Cummins",
+        "profile_image": "https://images.firstpost.com/uploads/2023/08/Pat-Cummins-640_AP.jpg?im=FitAndFill=(596,336)",
+        "region": "Australia",
+        "playing_role": "Bowler",
+        "icc_rating": 865,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Fast",
+        "price": 89000
+    },
+    {
+        "player_id": "PLR006",
+        "name": "Rohit Sharma",
+        "profile_image": "./pictures/rohit-sharma.webp",
+        "region": "India",
+        "playing_role": "Batsman",
+        "icc_rating": 841,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Off-break",
+        "price": 95000
+    },
+    {
+        "player_id": "PLR007",
+        "name": "Joe Root",
+        "profile_image": "./pictures/joe-root.webp",
+        "region": "England",
+        "playing_role": "Batsman",
+        "icc_rating": 836,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Off-break",
+        "price": 84000
+    },
+    {
+        "player_id": "PLR008",
+        "name": "Mitchell Starc",
+        "profile_image": "./pictures/stark.avif",
+        "region": "Australia",
+        "playing_role": "Bowler",
+        "icc_rating": 839,
+        "batting_style": "Left Handed",
+        "bowling_style": "Left-arm Fast",
+        "price": 79000
+    },
+    {
+        "player_id": "PLR009",
+        "name": "Ben Stokes",
+        "profile_image": "./pictures/Ben-Stokes.webp",
+        "region": "England",
+        "playing_role": "All-rounder",
+        "icc_rating": 826,
+        "batting_style": "Left Handed",
+        "bowling_style": "Right-arm Fast-medium",
+        "price": 98000
+    },
+    {
+        "player_id": "PLR010",
+        "name": "Jasprit Bumrah",
+        "profile_image": "./pictures/Jasprit-Bumrah.webp",
+        "region": "India",
+        "playing_role": "Bowler",
+        "icc_rating": 862,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Fast",
+        "price": 87000
+    },
+    {
+        "player_id": "PLR011",
+        "name": "Shakib Al Hasan",
+        "profile_image": "./pictures/shakib-al-hasan.webp",
+        "region": "Bangladesh",
+        "playing_role": "All-rounder",
+        "icc_rating": 831,
+        "batting_style": "Left Handed",
+        "bowling_style": "Left-arm Orthodox",
+        "price": 72000
+    },
+    {
+        "player_id": "PLR012",
+        "name": "Jos Buttler",
+        "profile_image": "./pictures/butler.avif",
+        "region": "England",
+        "playing_role": "Wicket-keeper Batsman",
+        "icc_rating": 819,
+        "batting_style": "Right Handed",
+        "bowling_style": "N/A",
+        "price": 81000
+    },
+    {
+        "player_id": "PLR013",
+        "name": "Rashid Khan",
+        "profile_image": "./pictures/Rashid-Khan.webp",
+        "region": "Afghanistan",
+        "playing_role": "Bowler",
+        "icc_rating": 853,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Leg-break",
+        "price": 85000
+    },
+    {
+        "player_id": "PLR014",
+        "name": "David Warner",
+        "profile_image": "./pictures/david-warner.webp",
+        "region": "Australia",
+        "playing_role": "Batsman",
+        "icc_rating": 828,
+        "batting_style": "Left Handed",
+        "bowling_style": "Right-arm Leg-break",
+        "price": 83000
+    },
+    {
+        "player_id": "PLR015",
+        "name": "Trent Boult",
+        "profile_image": "./pictures/trent-bold.webp",
+        "region": "New Zealand",
+        "playing_role": "Bowler",
+        "icc_rating": 847,
+        "batting_style": "Right Handed",
+        "bowling_style": "Left-arm Fast",
+        "price": 76000
+    },
+    {
+        "player_id": "PLR016",
+        "name": "Quinton de Kock",
+        "profile_image": "./pictures/quinton-de-kock.webp",
+        "region": "South Africa",
+        "playing_role": "Wicket-keeper Batsman",
+        "icc_rating": 824,
+        "batting_style": "Left Handed",
+        "bowling_style": "N/A",
+        "price": 74000
+    },
+    {
+        "player_id": "PLR017",
+        "name": "Mohammed Shami",
+        "profile_image": "./pictures/Shami.webp",
+        "region": "India",
+        "playing_role": "Bowler",
+        "icc_rating": 838,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Fast",
+        "price": 78000
+    },
+    {
+        "player_id": "PLR018",
+        "name": "Travis Head",
+        "profile_image": "./pictures/travis-head.webp",
+        "region": "Australia",
+        "playing_role": "Batsman",
+        "icc_rating": 825,
+        "batting_style": "Left Handed",
+        "bowling_style": "Right-arm Off-break",
+        "price": 71000
+    },
+    {
+        "player_id": "PLR019",
+        "name": "Ravindra Jadeja",
+        "profile_image": "./pictures/jadeja.webp",
+        "region": "India",
+        "playing_role": "All-rounder",
+        "icc_rating": 844,
+        "batting_style": "Left Handed",
+        "bowling_style": "Left-arm Orthodox",
+        "price": 86000
+    },
+    {
+        "player_id": "PLR020",
+        "name": "Mitchell Marsh",
+        "profile_image": "./pictures/marsh.webp",
+        "region": "Australia",
+        "playing_role": "All-rounder",
+        "icc_rating": 821,
+        "batting_style": "Right Handed",
+        "bowling_style": "Right-arm Fast-medium",
+        "price": 75000
+    }
+]
