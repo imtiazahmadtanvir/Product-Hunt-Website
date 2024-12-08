@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
 
-const SelectPlayers = ({ selectedPlayers, handleActiveTab, removePlayer }) => {
+const Selected = ({ selectedPlayers, handleActiveTab, removePlayer }) => {
     return (
         <div className="w-11/12 mx-auto mt-8 space-y-6">
                         <h2 className="text-2xl font-bold">Selected Player ({selectedPlayers.length}/6)</h2>
             {
                 selectedPlayers.map((player, index) => (
-                    <div key={index} className="flex justify-between items-center p-4 rounded-2xl border border-[#1313131A]">
+                    <div key={index} className="flex justify-between items-center w-10/12 mx-auto p-4 rounded-2xl border border-[#1313131A]">
                         <div className="flex justify-center items-center gap-5">
                             <img className="w-20 h-20 object-cover rounded-2xl" src={player.profile_image} alt="" />
                             <div>
-                                <h2 className="text-xl font-bold">{player.name}</h2>
+                                <h2 className="text-xl  text-[#13131399] font-bold">{player.name}</h2>
                                 <p className="text-[#13131399]">{player.batting_style}</p>
                                 <p className="text-[#13131399]">Price: ${player.price}</p>
                             </div>
@@ -29,10 +29,10 @@ const SelectPlayers = ({ selectedPlayers, handleActiveTab, removePlayer }) => {
     );
 };
 
-SelectPlayers.propTypes = {
+Selected.propTypes = {
     selectedPlayers: PropTypes.array.isRequired,
     handleActiveTab: PropTypes.func.isRequired,
     removePlayer: PropTypes.func.isRequired,
 }
 
-export default SelectPlayers;
+export default Selected;
