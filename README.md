@@ -1,5 +1,7 @@
 # BPL-DREAM 11
 ## Live URL - 
+https://heroic-cascaron-dd12cc.netlify.app
+
 # Project Description
 
 BPL-DREAM 11 is a dynamic and interactive React-based web application designed for cricket enthusiasts. This application allows users to build their dream cricket team, manage a team budget, and view detailed player profiles. Featuring a responsive user interface inspired by a Figma design, BPL-DREAM 11 ensures a seamless and enjoyable experience for users. The app utilizes JSON data to display player information and includes advanced features for intuitive team management.
