@@ -1,7 +1,7 @@
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
-// import Banner from "../components/Banner";
+import Banner from "../components/Banner";
 // import FeaturedArtifacts from "../components/FeaturedArtifacts";
 // import WhyPreservingHistory from "../components/WhyPreservingHistory";
 // import YourRoleInPreservingHistory from "../components/YourRoleInPreservingHistory";
@@ -11,7 +11,7 @@ const HomeLayout = () => {
     <div className="flex flex-col min-h-screen bg-white">
       <header>
         <Navbar />
-        {/* <Banner></Banner> */}
+        <Banner></Banner>
       </header>
       {/* <FeaturedArtifacts></FeaturedArtifacts> */}
        {/* <WhyPreservingHistory></WhyPreservingHistory> */}

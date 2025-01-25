@@ -6,6 +6,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Register from "../Authentication/Register";
 import ForgotPassword from "../Authentication/ForgotPassword";
 import Profile from "../pages/Profile";
+import AddProduct from "../pages/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,13 @@ const router = createBrowserRouter([
     path: "/profile",
     element: (
         <Profile />
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/add-product",
+    element: (
+        <AddProduct></AddProduct>
     ),
     errorElement: <ErrorPage />,
   },
