@@ -1,59 +1,126 @@
-import PropTypes from "prop-types";
-import coinImage from '../assets/coin.png';
-import logoImage from '../assets/logo.png'
+import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import logo from "../assets/coin.png";
+import defaultPic from "../assets/defulteimage.png";
+import { AuthContext } from "../provider/AuthProvider";
 
-const Navbar = ({ credit }) => {
-    return (
-        <div className="navbar w-11/12  mx-auto mt-4">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                    <li><a>Home</a></li>
-                    <li><a>Fixture</a></li>
-                    <li><a>Teams</a></li>
-                    <li><a>Schedules</a></li>
-                    </ul>
-                </div>
-                <div className="">
 
-                    <img src={logoImage} alt="" />
-                </div>
-                
-            </div>
-            <div className="navbar-center hidden lg:flex">
-            </div>
-            <div className="navbar-end">
-            <ul className="hidden lg:flex justify-center items-center menu menu-horizontal px-1">
-                <li>
-                    <a>Home</a></li>
-                    <li><a>Fixture</a></li>
-                    <li><a>Teams</a></li>
-                    <li><a>Schedules</a></li>
-                </ul>
-            <button className='flex items-center gap-1 p-2 border border-[#1313131A] rounded-xl text-black font-semibold'><span>{credit}</span> Coin <img className='w-[25%]' src={coinImage} alt="" /></button>
-            </div>
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  const userRole = user?.role || "user"; // Assuming roles are 'user', 'moderator', 'admin'
+  return (
+    <div className="flex items-center justify-between bg-base-200 dark:bg-gray-900 shadow-lg px-5 py-3 text-gray-800 dark:text-gray-200">
+      {/* Logo and Title */}
+      <div className="flex items-center">
+        <img src={logo} alt="Product Hunt Logo" className="w-10 h-10 mr-3" />
+        <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100">
+          Product Hunt
+        </Link>
+      </div>
+
+      {/* Navigation Links (Large Devices) */}
+      <div className="hidden lg:flex gap-5">
+        <Link to="/" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+          Home
+        </Link>
+        <Link to="/products" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+          All Products
+        </Link>
+        {user && (
+          <Link to="/submit-product" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+            Submit Product
+          </Link>
+        )}
+        {user && userRole === "admin" && (
+          <Link to="/admin/dashboard" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+            Admin Dashboard
+          </Link>
+        )}
+      </div>
+
+      {/* User Profile or Login/Register (Large Devices) */}
+      <div className="hidden lg:flex items-center gap-3">
+        {user ? (
+          <div className="flex items-center gap-2">
+            <Link to="/dashboard" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+              Dashboard
+            </Link>
+            <Link to="/profile" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+              <img src={user?.photoURL || defaultPic} alt={user?.name || "User"} className="w-8 h-8 rounded-full border-2 border-gray-300" />
+            </Link>
+            <button
+              onClick={logOut}
+              className="bg-yellow-400 dark:bg-yellow-500 px-4 py-2 rounded-lg text-gray-800 dark:text-gray-900 hover:bg-yellow-500 dark:hover:bg-yellow-600 transition"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <>
+            <Link to="/auth/login" className="btn btn-primary px-4 py-2">
+              Login
+            </Link>
+            <Link to="/auth/register" className="btn btn-primary px-4 py-2">
+              Register
+            </Link>
+          </>
+        )}
+      </div>
+
+      {/* Hamburger Menu for Medium/Small Devices */}
+      <div className="lg:hidden flex items-center">
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="btn btn-ghost" aria-label="Toggle Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 7.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMenuOpen && (
+        <div className="absolute top-[4rem] right-0 bg-base-100 dark:bg-gray-800 shadow-lg z-50 w-48">
+          <div className="flex flex-col items-start gap-2 p-4">
+            <Link to="/" className="btn btn-ghost w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
+              Home
+            </Link>
+            <Link to="/products" className="btn btn-ghost w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
+              All Products
+            </Link>
+            {user && (
+              <Link to="/submit-product" className="btn btn-ghost w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
+                Submit Product
+              </Link>
+            )}
+            {user && userRole === "admin" && (
+              <Link to="/admin/dashboard" className="btn btn-ghost w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
+                Admin Dashboard
+              </Link>
+            )}
+            {user ? (
+              <>
+                <Link to="/dashboard" className="btn btn-ghost w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
+                  Dashboard
+                </Link>
+                <button onClick={logOut} className="btn btn-primary w-full bg-yellow-400 hover:bg-yellow-500">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/auth/login" className="btn btn-primary w-full text-center bg-yellow-400 hover:bg-yellow-500">
+                  Login
+                </Link>
+                <Link to="/auth/register" className="btn btn-primary w-full text-center bg-yellow-400 hover:bg-yellow-500">
+                  Register
+                </Link>
+              </>
+            )}
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 };
-
-Navbar.propTypes = {
-    credit: PropTypes.number.isRequired
-}
 
 export default Navbar;
