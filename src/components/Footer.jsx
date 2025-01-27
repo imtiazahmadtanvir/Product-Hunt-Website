@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.webp";
 
 const Footer = () => {
   return (
     <div className="bg-gray-100 text-gray-700 shadow-lg">
-      <footer className="footer footer-center bg-base-200 text-base-content p-10">
+
+{/* Logo and Title */}
+
+<footer className="footer footer-center bg-base-200 text-base-content p-10">
+       {/* Logo and Title */}
+
+        <div className="flex items-center">
+                <img src={logo} alt="Product Hunt Logo" className="w-10 h-10 mr-3 rounded-lg" />
+                <Link to="/" className="text-xl font-bold text-base-800 dark:text-gray-100">
+                  Product Hunt
+                </Link>
+          </div>
         {/* Navigation Links */}
+      
         <nav className="grid grid-flow-col gap-4">
           <Link to="/about" className="link link-hover hover:text-gray-500">
             About us
@@ -62,7 +75,7 @@ const Footer = () => {
         {/* Footer Text */}
         <aside>
           <p className="text-sm">
-            Copyright © {new Date().getFullYear()} - All rights reserved by Visa Navigator Ltd.
+            Copyright © {new Date().getFullYear()} - All rights reserved by Product Hunt Ltd.
           </p>
         </aside>
       </footer>

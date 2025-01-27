@@ -7,6 +7,8 @@ import Register from "../Authentication/Register";
 import ForgotPassword from "../Authentication/ForgotPassword";
 import Profile from "../pages/Profile";
 import AddProduct from "../pages/AddProduct";
+import MyProduct from "../pages/MyProduct";
+import AllProduct from "../pages/AllProduct";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,20 @@ const router = createBrowserRouter([
     path: "/add-product",
     element: (
         <AddProduct></AddProduct>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/my-product",
+    element: (
+        <MyProduct></MyProduct>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/all-product",
+    element: (
+        <AllProduct></AllProduct>
     ),
     errorElement: <ErrorPage />,
   },

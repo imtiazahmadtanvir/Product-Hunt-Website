@@ -2,6 +2,8 @@ import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
+import FeaturedProducts from "../components/FeaturedProduct";
+import TrendingProducts from "../components/TrendingProduct";
 // import FeaturedArtifacts from "../components/FeaturedArtifacts";
 // import WhyPreservingHistory from "../components/WhyPreservingHistory";
 // import YourRoleInPreservingHistory from "../components/YourRoleInPreservingHistory";
@@ -12,6 +14,9 @@ const HomeLayout = () => {
       <header>
         <Navbar />
         <Banner></Banner>
+        <FeaturedProducts></FeaturedProducts>
+        <TrendingProducts></TrendingProducts>
+        
       </header>
       {/* <FeaturedArtifacts></FeaturedArtifacts> */}
        {/* <WhyPreservingHistory></WhyPreservingHistory> */}

@@ -13,7 +13,7 @@ const Navbar = () => {
 <div className="flex items-center justify-between bg-gray-200 text-gray-800 shadow-lg px-5 py-2">
 {/* Logo and Title */}
       <div className="flex items-center">
-        <img src={logo} alt="Product Hunt Logo" className="w-10 h-10 mr-3" />
+        <img src={logo} alt="Product Hunt Logo" className="w-10 h-10 rounded-lg mr-3" />
         <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100">
           Product Hunt
         </Link>
