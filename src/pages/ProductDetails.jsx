@@ -1,50 +1,55 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { UserContext } from "../context/UserContext"; // Assuming you have a context for user info
+import { AuthContext } from "../provider/AuthProvider";
 
 const ProductDetails = () => {
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
-  const navigate = useNavigate();
-  const { user } = useContext(UserContext); // Assuming user context provides user data
-  const [product, setProduct] = useState(null);
+//   const navigate = useNavigate();
+  
+  const [product, setProduct] = useState({
+    productName: '',
+    productImage: '',
+    tags: [],
+    votes: 0,
+    status: '',
+    description: '',
+    externalLinks: [],
+  });
   const [reviews, setReviews] = useState([]);
   const [reviewDescription, setReviewDescription] = useState("");
   const [rating, setRating] = useState(5); // Default rating to 5
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/product/${id}`);
+        setProduct(response.data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/reviews/${id}`);
+        setReviews(response.data);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      }
+    };
+
     fetchProduct();
     fetchReviews();
   }, [id]);
 
-  // Fetch product details
-  const fetchProduct = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/product/${id}`);
-      setProduct(response.data);
-    } catch (error) {
-      console.error("Error fetching product:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Fetch reviews for the product
-  const fetchReviews = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/reviews/${id}`);
-      setReviews(response.data);
-    } catch (error) {
-      console.error("Error fetching reviews:", error);
-    }
-  };
-
   // Handle upvote
   const handleUpvote = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/upvote/${id}`);
+      await axios.put(`http://localhost:5000/upvote/${id}`);
       fetchProduct(); // Refresh the product data after upvoting
       Swal.fire("Success!", "You upvoted the product.", "success");
     } catch (error) {
@@ -56,7 +61,7 @@ const ProductDetails = () => {
   // Handle report
   const handleReport = async () => {
     try {
-      const response = await axios.post(`http://localhost:5000/report/${id}`);
+      await axios.post(`http://localhost:5000/report/${id}`);
       Swal.fire("Reported!", "Product has been reported.", "success");
     } catch (error) {
       console.error("Error reporting product:", error);
@@ -81,7 +86,7 @@ const ProductDetails = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:5000/reviews", newReview);
+      await axios.post("http://localhost:5000/reviews", newReview);
       Swal.fire("Success", "Your review has been submitted.", "success");
       fetchReviews(); // Refresh reviews after submitting
     } catch (error) {
@@ -103,7 +108,7 @@ const ProductDetails = () => {
       <h1 className="text-2xl font-bold mb-4">{product.productName}</h1>
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 mb-4 md:mb-0">
-          <img src={product.image} alt={product.productName} className="w-full rounded-lg" />
+          <img src={product.productImage} alt={product.productName} className="w-full rounded-lg" />
         </div>
         <div className="md:w-1/2 pl-4">
           <p className="text-gray-700">{product.description}</p>
@@ -130,7 +135,7 @@ const ProductDetails = () => {
             </ul>
           </div>
           <div className="mt-4">
-            <p className="font-semibold">Upvotes: {product.upvotes}</p>
+            <p className="font-semibold">Upvotes: {product.votes}</p>
             <button
               onClick={handleUpvote}
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-2"

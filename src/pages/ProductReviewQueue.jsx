@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2"; // Import SweetAlert2
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const ProductReviewQueue = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     fetchProducts();
@@ -114,8 +116,8 @@ const ProductReviewQueue = () => {
               <td className="border px-4 py-2">
                 <Link
                   className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
-                  to={`/product-details/${product._id}`}
-                >
+                  onClick={() => navigate(`/details/${product._id}`)}
+                  >
                   View Details
                 </Link>
               </td>

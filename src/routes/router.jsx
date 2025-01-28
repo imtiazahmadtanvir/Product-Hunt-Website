@@ -12,13 +12,13 @@ import MyProduct from "../pages/MyProduct";
 import DashboardLayout from "../pages/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import ProductReviewQueue from "../pages/ProductReviewQueue";
-import ReportedContents from "../pages/ReportedContents";
 import ManageUsers from "../pages/ManageUsers";
 import AdminStatisticsPage from "../pages/AdminStatisticsPage";
 import ManageCouponPage from "../pages/ManageCouponPage";
 import UpdateProduct from "../pages/UpdateProduct";
 // import ProductsPage from "../pages/ProductsPage";
 import ProductDetails from "../pages/ProductDetails";
+import ReportedProducts from "../pages/ReportedProducts";
 
 const router = createBrowserRouter([
   {
@@ -102,7 +102,7 @@ const router = createBrowserRouter([
     {
       path: "reported-contents",
       element: (
-          <ReportedContents></ReportedContents>
+          <ReportedProducts></ReportedProducts>
       ),
       errorElement: <ErrorPage />,
      
