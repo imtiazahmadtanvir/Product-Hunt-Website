@@ -6,39 +6,39 @@ const ManageUsers = () => {
 
   useEffect(() => {
     // Fetch all users from the backend
-    fetch("https://product-hunt-client-server.vercel.app/users")
+    fetch("https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/users")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
-  const handleRoleChange = (userId, newRole) => {
-    // Confirm role change
-    Swal.fire({
-      title: `Are you sure you want to make this user ${newRole}?`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: `Yes, make ${newRole}`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Make API call to update the user role
-        fetch(`https://product-hunt-client-server.vercel.app/users/${userId}/role`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ role: newRole }),
-        })
-          .then(() => {
-            setUsers(users.map((user) => (user._id === userId ? { ...user, role: newRole } : user)));
-            Swal.fire("Updated!", `User role has been changed to ${newRole}.`, "success");
-          })
-          .catch((error) => Swal.fire("Error!", "There was an issue updating the role.", "error"));
-      }
-    });
-  };
+  // const handleRoleChange = (userId, newRole) => {
+  //   // Confirm role change
+  //   Swal.fire({
+  //     title: `Are you sure you want to make this user ${newRole}?`,
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: `Yes, make ${newRole}`,
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       // Make API call to update the user role
+  //       fetch(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/users/${userId}/role`, {
+  //         method: "PATCH",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ role: newRole }),
+  //       })
+  //         .then(() => {
+  //           setUsers(users.map((user) => (user._id === userId ? { ...user, role: newRole } : user)));
+  //           Swal.fire("Updated!", `User role has been changed to ${newRole}.`, "success");
+  //         })
+  //         .catch((error) => Swal.fire("Error!", "There was an issue updating the role.", "error"));
+  //     }
+  //   });
+  // };
 
   return (
     <div className="container mx-auto p-4">
@@ -87,3 +87,17 @@ const ManageUsers = () => {
 };
 
 export default ManageUsers;
+
+
+
+// const ManageUsers = () => {
+
+
+//   return (
+//     <div>
+      
+//     </div>
+//   );
+// };
+
+// export default ManageUsers;

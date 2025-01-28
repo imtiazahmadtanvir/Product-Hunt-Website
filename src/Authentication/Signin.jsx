@@ -21,7 +21,7 @@ const Signin = () => {
           console.log('sign in' ,result.user.email);
 
           const  user ={ email: email }
-          axios.post('https://product-hunt-client-server.vercel.app/jwt', user ,{ withCredentials : true})
+          axios.post('https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/jwt', user ,{ withCredentials : true})
           .then(res=>{
             console.log(res.data)
           })

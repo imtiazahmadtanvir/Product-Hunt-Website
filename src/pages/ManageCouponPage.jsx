@@ -12,7 +12,7 @@ const ManageCouponPage = () => {
 
   useEffect(() => {
     // Fetch coupons when the page loads
-    axios.get("https://product-hunt-client-server.vercel.app/api/coupons")
+    axios.get("https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/coupons")
       .then((response) => setCoupons(response.data))
       .catch((error) => console.error("Error fetching coupons:", error));
   }, []);
@@ -25,7 +25,7 @@ const ManageCouponPage = () => {
   const handleAddCoupon = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://product-hunt-client-server.vercel.app/coupons", newCoupon);
+      const response = await axios.post("https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/coupons", newCoupon);
       setCoupons([...coupons, response.data]);
       setNewCoupon({ code: "", expiryDate: "", description: "", discountAmount: "" }); // Clear form
     } catch (error) {
@@ -35,7 +35,7 @@ const ManageCouponPage = () => {
 
   const handleDeleteCoupon = async (id) => {
     try {
-      await axios.delete(`https://product-hunt-client-server.vercel.app/coupons/${id}`);
+      await axios.delete(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/coupons/${id}`);
       setCoupons(coupons.filter((coupon) => coupon._id !== id));
     } catch (error) {
       console.error("Error deleting coupon:", error);
@@ -47,7 +47,7 @@ const ManageCouponPage = () => {
     // Here, it's just an example of how you would handle editing a coupon
     const updatedCoupon = { ...newCoupon };
     try {
-      const response = await axios.put(`https://product-hunt-client-server.vercel.app/coupons/${id}`, updatedCoupon);
+      const response = await axios.put(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/coupons/${id}`, updatedCoupon);
       setCoupons(coupons.map((coupon) => (coupon._id === id ? response.data : coupon)));
     } catch (error) {
       console.error("Error updating coupon:", error);

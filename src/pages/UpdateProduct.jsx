@@ -19,7 +19,7 @@ const UpdateProduct = () => {
     // Fetch product data by ID
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`https://product-hunt-client-server.vercel.app/my-products/${id}`);
+        const response = await fetch(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/my-products/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch product');
         }
@@ -44,7 +44,7 @@ const UpdateProduct = () => {
     e.preventDefault();
     try {
       const { _id, ...updatedProduct } = product;
-      const response = await fetch(`https://product-hunt-client-server.vercel.app/update/${id}`, {
+      const response = await fetch(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/update/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

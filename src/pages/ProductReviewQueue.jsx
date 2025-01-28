@@ -16,7 +16,7 @@ const ProductReviewQueue = () => {
   // Fetch products from the backend
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://product-hunt-client-server.vercel.app/my-products");
+      const response = await axios.get("https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/my-products");
       console.log("Fetched products:", response.data); // Log to verify data
 
       if (response.data && Array.isArray(response.data)) {
@@ -46,7 +46,7 @@ const ProductReviewQueue = () => {
 
     if (confirmation.isConfirmed) {
       try {
-        const response = await axios.put(`https://product-hunt-client-server.vercel.app/feature/${id}`);
+        const response = await axios.put(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/feature/${id}`);
 
         // Refresh the product list after marking it as featured
         fetchProducts(); // Re-fetch the products to reflect the updates
@@ -72,7 +72,7 @@ const ProductReviewQueue = () => {
     if (confirmation.isConfirmed) {
       try {
         // Update product status in the database
-        const response = await axios.put(`https://product-hunt-client-server.vercel.app/update/${id}`, { status: newStatus });
+        const response = await axios.put(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/update/${id}`, { status: newStatus });
 
         // Update product status locally
         setProducts((prevProducts) =>

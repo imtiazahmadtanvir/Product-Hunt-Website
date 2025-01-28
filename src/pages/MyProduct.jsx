@@ -8,7 +8,7 @@ const MyProduct = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
-    fetch("https://product-hunt-client-server.vercel.app/my-products") // Replace with your actual API endpoint
+    fetch("https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/my-products") // Replace with your actual API endpoint
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -31,7 +31,7 @@ const MyProduct = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://product-hunt-client-server.vercel.app/my-products/${id}`, {
+        fetch(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1..app/my-products/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

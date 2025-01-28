@@ -26,7 +26,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://product-hunt-client-server.vercel.app/product/${id}`);
+        const response = await axios.get(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/product/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -35,7 +35,7 @@ const ProductDetails = () => {
     
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`https://product-hunt-client-server.vercel.app/reviews/${id}`);
+        const response = await axios.get(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/reviews/${id}`);
         setReviews(response.data);
       } catch (error) {
         console.error("Error fetching reviews:", error);
@@ -49,7 +49,7 @@ const ProductDetails = () => {
   // Handle upvote
   const handleUpvote = async () => {
     try {
-      await axios.put(`https://product-hunt-client-server.vercel.app/upvote/${id}`);
+      await axios.put(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/upvote/${id}`);
       fetchProduct(); // Refresh the product data after upvoting
       Swal.fire("Success!", "You upvoted the product.", "success");
     } catch (error) {
@@ -61,7 +61,7 @@ const ProductDetails = () => {
   // Handle report
   const handleReport = async () => {
     try {
-      await axios.post(`https://product-hunt-client-server.vercel.app/report/${id}`);
+      await axios.post(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/report/${id}`);
       Swal.fire("Reported!", "Product has been reported.", "success");
     } catch (error) {
       console.error("Error reporting product:", error);
@@ -86,7 +86,7 @@ const ProductDetails = () => {
     };
 
     try {
-      await axios.post("https://product-hunt-client-server.vercel.app/reviews", newReview);
+      await axios.post("https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/reviews", newReview);
       Swal.fire("Success", "Your review has been submitted.", "success");
       fetchReviews(); // Refresh reviews after submitting
     } catch (error) {

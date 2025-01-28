@@ -21,6 +21,20 @@ const Register = () => {
     
   };
 
+  createUserWithGoogle()
+  .then((result) => {
+    const userData = {
+      name: result.user.displayName,
+      email: result.user.email,
+      photo: result.user.photoURL,
+      role: "User",
+    };
+    axiosPublic.post("/users", userData).catch(console.error);
+    navigate("/");
+  })
+  .catch((error) => setError((prev) => ({ ...prev, google: error.message })));
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setError({});
