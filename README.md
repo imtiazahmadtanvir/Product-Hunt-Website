@@ -2,10 +2,10 @@
 
 
 ## Live Site-1
-[](#)
+[https://product-hunt-client.web.app](#)
 
 ## Live Site-2
-[](#)
+[product-hunt-deploy.netlify.app](#)
 
 ## Description
 
