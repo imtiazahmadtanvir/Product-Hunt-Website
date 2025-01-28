@@ -1,166 +1,172 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 const ProductReviewQueue = () => {
-    return (
-        <div>
-            <h1>ProductReviewQueue</h1>
-        </div>
-    );
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  // Fetch products from the backend
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/my-products");
+      console.log("Fetched products:", response.data); // Log to verify data
+
+      if (response.data && Array.isArray(response.data)) {
+        const sortedProducts = response.data.sort((a, b) =>
+          a.status === "Pending" ? -1 : 1
+        );
+        setProducts(sortedProducts);
+      } else {
+        console.error("No valid product data found");
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle "Make Featured" action
+  const handleMakeFeatured = async (id) => {
+    const confirmation = await Swal.fire({
+      title: `Are you sure you want to make this product Featured?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Make Featured",
+      cancelButtonText: "No, cancel",
+    });
+
+    if (confirmation.isConfirmed) {
+      try {
+        const response = await axios.put(`http://localhost:5000/feature/${id}`);
+
+        // Refresh the product list after marking it as featured
+        fetchProducts(); // Re-fetch the products to reflect the updates
+
+        Swal.fire("Success!", "Product has been marked as Featured.", "success");
+      } catch (error) {
+        console.error("Error moving product to Featured:", error);
+        Swal.fire("Error", "There was an issue moving the product to Featured.", "error");
+      }
+    }
+  };
+
+  // Handle regular status updates (Accept/Reject)
+  const handleUpdateStatus = async (id, newStatus) => {
+    const confirmation = await Swal.fire({
+      title: `Are you sure you want to ${newStatus} this product?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: `Yes, ${newStatus}`,
+      cancelButtonText: "No, cancel",
+    });
+
+    if (confirmation.isConfirmed) {
+      try {
+        // Update product status in the database
+        const response = await axios.put(`http://localhost:5000/update/${id}`, { status: newStatus });
+
+        // Update product status locally
+        setProducts((prevProducts) =>
+          prevProducts.map((product) =>
+            product._id === id ? { ...product, status: newStatus } : product
+          )
+        );
+
+        Swal.fire("Success!", `Product has been marked as ${newStatus}.`, "success");
+      } catch (error) {
+        console.error("Error updating product status:", error);
+        Swal.fire("Error", "There was an issue updating the product status.", "error");
+      }
+    }
+  };
+
+  if (loading) {
+    return <div>Loading products...</div>;
+  }
+
+  if (products.length === 0) {
+    return <div>No products available.</div>;
+  }
+
+  return (
+    <div className="container mx-auto mt-8 p-4">
+      <h1 className="text-2xl font-bold mb-4">Product Review Queue</h1>
+      <table className="min-w-full table-auto border-collapse border border-gray-300">
+        <thead>
+          <tr className="bg-gray-200">
+            <th className="border px-4 py-2">Product Name</th>
+            <th className="border px-4 py-2">View Details</th>
+            <th className="border px-4 py-2">Featured</th>
+            <th className="border px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product._id} className="border-b">
+              <td className="border px-4 py-2">{product.productName}</td>
+              <td className="border px-4 py-2">
+                <Link
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
+                  to={`/product-details/${product._id}`}
+                >
+                  View Details
+                </Link>
+              </td>
+
+             
+                {product.featured === true ? (
+                     <td className="border px-4 py-2 space-x-2">
+                  <button className="bg-yellow-500 text-white px-2 py-1 rounded">Featured</button>
+                  </td>
+                ) : (
+                    <td className="border px-4 py-2 space-x-2">
+
+                  <button
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded"
+                    onClick={() => handleMakeFeatured(product._id)}
+                    disabled={product.status === "Featured"}
+                  >
+                    Make Featured
+                  </button>
+                  </td>
+
+                )}
+
+              <td className="border px-4 py-2 space-x-2">
+                {product.status === "Pending" ? (
+                  <>
+                    <button
+                      className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
+                      onClick={() => handleUpdateStatus(product._id, "Accepted")}
+                      disabled={product.status === "Accepted" || product.status === "Rejected"}
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="bg-red-500 hover:bg-black-900 text-white px-2 py-1 rounded"
+                      onClick={() => handleUpdateStatus(product._id, "Rejected")}
+                      disabled={product.status === "Rejected" || product.status === "Accepted"}
+                    >
+                      Reject
+                    </button>
+                  </>
+                ) : (
+                  <span>{product.status}</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default ProductReviewQueue;
-
-
-// import { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// // import Swal from "sweetalert2";
-// import toast from "react-hot-toast";
-
-// const ProductReviewQueue = () => {
-//   const [products, setProducts] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   // Fetch products from the database (replace with your actual API call)
-//   useEffect(() => {
-//     // Example fetch request to get products from the server
-//     fetch("http://localhost:5000/products?status=pending", {
-//       method: "GET",
-//       credentials: "include",
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         setProducts(data);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching products:", error);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   // Handle accepting a product
-//   const handleAccept = (productId) => {
-//     fetch(`http://localhost:5000/products/${productId}/accept`, {
-//       method: "PATCH",
-//       credentials: "include",
-//     })
-//       .then((res) => res.json())
-//       .then(() => {
-//         toast.success("Product accepted!");
-//         setProducts(products.map((product) =>
-//           product._id === productId ? { ...product, status: "Accepted" } : product
-//         ));
-//       })
-//       .catch((error) => {
-//         console.error("Error accepting product:", error);
-//         toast.error("Failed to accept product");
-//       });
-//   };
-
-//   // Handle rejecting a product
-//   const handleReject = (productId) => {
-//     fetch(`http://localhost:5000/products/${productId}/reject`, {
-//       method: "PATCH",
-//       credentials: "include",
-//     })
-//       .then((res) => res.json())
-//       .then(() => {
-//         toast.success("Product rejected!");
-//         setProducts(products.map((product) =>
-//           product._id === productId ? { ...product, status: "Rejected" } : product
-//         ));
-//       })
-//       .catch((error) => {
-//         console.error("Error rejecting product:", error);
-//         toast.error("Failed to reject product");
-//       });
-//   };
-
-//   // Handle making a product featured
-//   const handleMakeFeatured = (productId) => {
-//     fetch(`http://localhost:5000/products/${productId}/feature`, {
-//       method: "PATCH",
-//       credentials: "include",
-//     })
-//       .then((res) => res.json())
-//       .then(() => {
-//         toast.success("Product marked as featured!");
-//         setProducts(products.map((product) =>
-//           product._id === productId ? { ...product, featured: true } : product
-//         ));
-//       })
-//       .catch((error) => {
-//         console.error("Error making product featured:", error);
-//         toast.error("Failed to mark product as featured");
-//       });
-//   };
-
-//   if (loading) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div className="container mx-auto p-6">
-//       <h2 className="text-2xl font-bold mb-6">Product Review Queue</h2>
-//       <table className="min-w-full table-auto border-collapse border border-gray-300">
-//         <thead>
-//           <tr className="bg-gray-100">
-//             <th className="px-4 py-2 border border-gray-300">Product Name</th>
-//             <th className="px-4 py-2 border border-gray-300">Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {products
-//             .sort((a, b) => (a.status === "pending" ? -1 : 1)) // Sort by status: Pending first
-//             .map((product) => (
-//               <tr key={product._id} className="hover:bg-gray-50">
-//                 <td className="px-4 py-2 border border-gray-300">{product.name}</td>
-//                 <td className="px-4 py-2 border border-gray-300">
-//                   <div className="flex space-x-4">
-//                     {/* View Details Button */}
-//                     <Link
-//                       to={`/product/${product._id}`}
-//                       className="text-blue-500 hover:underline"
-//                     >
-//                       View Details
-//                     </Link>
-
-//                     {/* Make Featured Button */}
-//                     {!product.featured && (
-//                       <button
-//                         onClick={() => handleMakeFeatured(product._id)}
-//                         className="text-green-500 hover:underline"
-//                       >
-//                         Make Featured
-//                       </button>
-//                     )}
-
-//                     {/* Accept Button */}
-//                     {product.status === "pending" && (
-//                       <button
-//                         onClick={() => handleAccept(product._id)}
-//                         className="text-blue-500 hover:underline"
-//                       >
-//                         Accept
-//                       </button>
-//                     )}
-
-//                     {/* Reject Button */}
-//                     {product.status === "pending" && (
-//                       <button
-//                         onClick={() => handleReject(product._id)}
-//                         className="text-red-500 hover:underline"
-//                       >
-//                         Reject
-//                       </button>
-//                     )}
-//                   </div>
-//                 </td>
-//               </tr>
-//             ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
-
-// export default ProductReviewQueue;

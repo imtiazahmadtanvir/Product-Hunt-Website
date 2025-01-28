@@ -51,10 +51,7 @@ const MyProduct = () => {
     });
   };
 
-  const handleUpdate = (id) => {
-    // Navigate to the update page, passing the product ID as part of the URL
-    navigate(`/dashboard/my-product/:${id}`);
-  };
+
 
   return (
     <div className="container mx-auto p-4">
@@ -80,8 +77,8 @@ const MyProduct = () => {
                 <td className="py-2 px-4 border-b">
                   <button
                     className="bg-blue-500 text-white px-4 py-1 rounded mr-2"
-                    onClick={() => handleUpdate(Product._id)} // Use handleUpdate here
-                  >
+                    onClick={() => navigate(`/update/${Product._id}`)}
+                    >
                     Update
                   </button>
                   <button

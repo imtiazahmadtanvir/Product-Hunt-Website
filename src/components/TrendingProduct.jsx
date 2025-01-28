@@ -83,7 +83,7 @@ const TrendingProducts = () => {
 
   return (
     <section className="py-12 bg-gray-100">
-      <div className="container mx-auto">
+      <div id="product" className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8">Trending Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
@@ -125,7 +125,7 @@ const TrendingProducts = () => {
         <div className="text-center mt-8">
           <button
             className="btn btn-primary px-6 py-2"
-            onClick={() => navigate("/products")}
+            onClick={() => navigate("dashboard")}
           >
             Show All Products
           </button>

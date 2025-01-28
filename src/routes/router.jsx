@@ -17,6 +17,8 @@ import ManageUsers from "../pages/ManageUsers";
 import AdminStatisticsPage from "../pages/AdminStatisticsPage";
 import ManageCouponPage from "../pages/ManageCouponPage";
 import UpdateProduct from "../pages/UpdateProduct";
+// import ProductsPage from "../pages/ProductsPage";
+import ProductDetails from "../pages/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,38 @@ const router = createBrowserRouter([
     element: <HomeLayout />,
     errorElement: <ErrorPage />,
   },
-
+  {
+    path: "update/:id",
+    element: (
+        <UpdateProduct></UpdateProduct>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "details/:id",
+    element: (
+      <PrivateRoute>       
+         <ProductDetails></ProductDetails>
+   </PrivateRoute>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  
+  {
+    path: "details/:id",
+    element: (
+        <UpdateProduct></UpdateProduct>
+    ),
+    errorElement: <ErrorPage />,
+  },
+   
+  // {
+  //   path: "product",
+  //   element: (
+  //      <ProductsPage></ProductsPage>
+  //   ),
+  //   errorElement: <ErrorPage />,
+  // },
   {
     path:"dashboard",
     element: (
@@ -41,13 +74,7 @@ const router = createBrowserRouter([
       ),
       errorElement: <ErrorPage />,
     },
-    {
-      path: "my-product/:id",
-      element: (
-          <UpdateProduct></UpdateProduct>
-      ),
-      errorElement: <ErrorPage />,
-    },
+
     {
       path: "add-product",
       element: (

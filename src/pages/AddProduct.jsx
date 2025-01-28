@@ -19,6 +19,7 @@ const AddProduct = () => {
     ownerEmail: user?.email || "Unknown Email",
     timestamp: "",
     status: "Pending",
+    votes: 0, 
   });
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const AddProduct = () => {
       tags: formData.tags.length ? formData.tags.join(", ") : "No Tags", 
       timestamp: new Date().toISOString(),
       status: "Pending", // Default status when submitting
+      votes: 0, 
     };
     
     console.log(newFormData);
@@ -74,6 +76,7 @@ const AddProduct = () => {
             ownerEmail: user?.email || "Unknown Email",
             timestamp: "",
             status: "Pending",
+            votes: 0, 
           });
         }
       })

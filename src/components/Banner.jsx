@@ -105,7 +105,7 @@ const Banner = () => {
 
           {/* Explore Button */}
           <Link
-            to="/explore-products"
+            to="/dashboard"
             className="bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-yellow-600 hover:text-gray-100 transition"
           >
             Start Exploring Now

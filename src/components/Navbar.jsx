@@ -24,9 +24,9 @@ const Navbar = () => {
         <Link to="/" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
           Home
         </Link>
-        <Link to="/products" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+        <a href="#product" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
           Products
-        </Link>
+        </a>
 
       </div>
 
@@ -70,7 +70,7 @@ const Navbar = () => {
             </svg>
           </button>
         )
-        };
+        }
       </div>
 
 
@@ -81,9 +81,9 @@ const Navbar = () => {
             <Link to="/" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 ">
               Home
             </Link>
-            <Link to="/products" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 dark:hover:bg-gray-700">
-              Products
-            </Link>
+            <a href="#product" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 dark:hover:bg-gray-700">
+              Product
+            </a>
 
 
             {user ? (
