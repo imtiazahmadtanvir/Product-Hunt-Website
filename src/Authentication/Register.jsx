@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import axiosPublic from "../components/axiosPublic"; // Adjust the path if needed
 
 const Register = () => {
   const { createNewUser, setUser, createUserWithGoogle } = useContext(AuthContext);
@@ -17,6 +18,7 @@ const Register = () => {
       .catch((error) => {
         setError((prev) => ({ ...prev, google: error.message }));
       });
+    
   };
 
   const handleSubmit = (e) => {
@@ -28,6 +30,7 @@ const Register = () => {
     const email = form.get("email");
     const photo = form.get("photo");
     const password = form.get("password");
+    const role = form.get("role"); // Get the role value
 
     if (name.length < 5) {
       setError((prevError) => ({
@@ -65,10 +68,30 @@ const Register = () => {
       return;
     }
 
-    createNewUser(email, password,photo)
+    if (!role || role === "Select Role") {
+      setError((prevError) => ({
+        ...prevError,
+        role: "Please select a role before creating an account.",
+      }));
+      return;
+    }
+
+    createNewUser(email, password, photo)
       .then((result) => {
         setUser(result.user);
-        navigate("/");
+        // Save user data to backend
+        const userData = { name, email, photo, role };
+        axiosPublic.post('/users', userData)
+          .then((response) => {
+            console.log(response);
+            navigate("/");
+          })
+          .catch((error) => {
+            setError((prevError) => ({
+              ...prevError,
+              register: "Failed to save user data. Please try again.",
+            }));
+          });
       })
       .catch((err) => {
         setError((prevError) => ({
@@ -126,6 +149,17 @@ const Register = () => {
               />
               {error.password && <p className="text-red-500 text-xs mt-1">{error.password}</p>}
             </div>
+            <div>
+              <select
+                name="role"
+                className="select select-bordered max-w-xs"
+                required
+              >
+                <option disabled value="">Select Role</option>
+                <option value="User">User</option>
+              </select>
+              {error.role && <p className="text-red-500 text-xs mt-1">{error.role}</p>}
+            </div>
           </div>
           {error.register && <p className="text-red-500 text-sm mt-4">{error.register}</p>}
           <button
@@ -135,10 +169,10 @@ const Register = () => {
             Register
           </button>
         </form>
-        <div className="flex flex-col text-center items-center  gap-2 justify-center  mt-6">
+        <div className="flex flex-col text-center items-center gap-2 justify-center mt-6">
           <button
             onClick={handleGoogleSignUP}
-            className="flex  gap-2 mx-auto text-center items-center  w-full bg-gray-100 border rounded-md py-2 px-4 text-gray-700 hover:bg-gray-50"
+            className="flex gap-2 mx-auto text-center items-center w-full bg-gray-100 border rounded-md py-2 px-4 text-gray-700 hover:bg-gray-50"
           >
             <FaGoogle className="text-lg" /> Sign up with Google
           </button>

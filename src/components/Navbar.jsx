@@ -8,10 +8,10 @@ import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  const userRole = user?.role || "user"; // Assuming roles are 'user', 'moderator', 'admin'
+  // const userRole = user?.role || "user"; // Assuming roles are 'user', 'moderator', 'admin'
   return (
-<div className="flex items-center justify-between bg-gray-200 text-gray-800 shadow-lg px-5 py-2">
-{/* Logo and Title */}
+    <div className="flex items-center justify-between bg-gray-200 text-gray-800 shadow-lg px-5 py-2">
+      {/* Logo and Title */}
       <div className="flex items-center">
         <img src={logo} alt="Product Hunt Logo" className="w-10 h-10 rounded-lg mr-3" />
         <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100">
@@ -25,35 +25,19 @@ const Navbar = () => {
           Home
         </Link>
         <Link to="/products" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
-          All Products
+          Products
         </Link>
-        {user && (
-          <Link to="/add-product" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
-            Add Product
-          </Link>
-        )}
-           {user && (
-          <Link to="/submit-product" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
-            Submit Product
-          </Link>
-        )}
-        {user && userRole === "admin" && (
-          <Link to="/admin/dashboard" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
-            Admin Dashboard
-          </Link>
-        )}
+
       </div>
 
       {/* User Profile or Login/Register (Large Devices) */}
       <div className="hidden lg:flex items-center gap-3">
         {user ? (
           <div className="flex items-center gap-2">
-            <Link to="/dashboard" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
-              Dashboard
-            </Link>
-            <Link to="/profile" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
               <img src={user?.photoURL || defaultPic} alt={user?.name || "User"} className="w-8 h-8 rounded-full border-2 border-gray-300" />
-            </Link>
+            </button>
             <button
               onClick={logOut}
               className="bg-yellow-400 dark:bg-yellow-500 px-4 py-2 rounded-lg text-gray-800 dark:text-gray-900 hover:bg-yellow-500 dark:hover:bg-yellow-600 transition"
@@ -73,14 +57,22 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Hamburger Menu for Medium/Small Devices */}
       <div className="lg:hidden flex items-center">
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="btn btn-ghost" aria-label="Toggle Menu">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 7.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-          </svg>
-        </button>
+
+        {user ? (
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+            <img src={user?.photoURL || defaultPic} alt={user?.name || "User"} className="w-8 h-8 rounded-full border-2 border-gray-300" />
+          </button>
+        ) : (
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="btn btn-ghost" aria-label="Toggle Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 7.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+            </svg>
+          </button>
+        )
+        };
       </div>
+
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
@@ -90,18 +82,10 @@ const Navbar = () => {
               Home
             </Link>
             <Link to="/products" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 dark:hover:bg-gray-700">
-              All Products
+              Products
             </Link>
-            {user && (
-              <Link to="/submit-product" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 dark:hover:bg-gray-700">
-                Submit Product
-              </Link>
-            )}
-            {user && userRole === "admin" && (
-              <Link to="/admin/dashboard" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 dark:hover:bg-gray-700">
-                Admin Dashboard
-              </Link>
-            )}
+
+
             {user ? (
               <>
                 <Link to="/dashboard" className="btn btn-ghost bg-white w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">

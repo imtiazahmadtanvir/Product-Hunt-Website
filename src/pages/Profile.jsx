@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import defaultPic from "../assets/defulteimage.png";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -27,7 +27,7 @@ const Profile = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Main Content */}
       <div className="flex-grow pb-16">
@@ -65,7 +65,7 @@ const Profile = () => {
       </div>
 
       {/* Footer Fixed at Bottom */}
-      <Footer className="bottom-0 left-0 w-full z-50 bg-base-200" />
+      {/* <Footer className="bottom-0 left-0 w-full z-50 bg-base-200" /> */}
     </div>
   );
 };
