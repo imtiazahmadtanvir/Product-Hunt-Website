@@ -16,6 +16,7 @@ import ReportedContents from "../pages/ReportedContents";
 import ManageUsers from "../pages/ManageUsers";
 import AdminStatisticsPage from "../pages/AdminStatisticsPage";
 import ManageCouponPage from "../pages/ManageCouponPage";
+import UpdateProduct from "../pages/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,13 @@ const router = createBrowserRouter([
       path: "my-product",
       element: (
           <MyProduct></MyProduct>
+      ),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "my-product/:id",
+      element: (
+          <UpdateProduct></UpdateProduct>
       ),
       errorElement: <ErrorPage />,
     },

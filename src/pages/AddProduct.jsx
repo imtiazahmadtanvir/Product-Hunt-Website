@@ -3,8 +3,6 @@ import { TagsInput } from "react-tag-input-component";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
-// import Navbar from "../components/Navbar";
-// import Footer from "../components/Footer";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
@@ -20,6 +18,7 @@ const AddProduct = () => {
     ownerName: user?.displayName || "Unknown User",
     ownerEmail: user?.email || "Unknown Email",
     timestamp: "",
+    status: "Pending",
   });
 
   useEffect(() => {
@@ -39,8 +38,9 @@ const AddProduct = () => {
   
     const newFormData = {
       ...formData,
-      tags: formData.tags.length ? formData.tags.join(", ") : "No Tags", // Ensure tags are processed correctly
+      tags: formData.tags.length ? formData.tags.join(", ") : "No Tags", 
       timestamp: new Date().toISOString(),
+      status: "Pending", // Default status when submitting
     };
     
     console.log(newFormData);
@@ -58,7 +58,7 @@ const AddProduct = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
-            text: `Product "${formData.productName}" added successfully!`,
+            text: `Product "${formData.productName}" added successfully with status: Pending`,
             icon: "success",
             confirmButtonText: "OK",
           });
@@ -73,6 +73,7 @@ const AddProduct = () => {
             ownerName: user?.displayName || "Unknown User",
             ownerEmail: user?.email || "Unknown Email",
             timestamp: "",
+            status: "Pending",
           });
         }
       })
@@ -82,7 +83,6 @@ const AddProduct = () => {
         toast.error("Failed to add product. Please try again.");
       });
   };
-  
 
   if (!isUserLoaded) {
     return (
@@ -94,7 +94,6 @@ const AddProduct = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <main className="w-11/12 lg:w-8/12 mx-auto my-8">
         <h1 className="text-3xl font-bold text-center mb-6">Add Product</h1>
         <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow-md">
@@ -150,7 +149,6 @@ const AddProduct = () => {
               name="tags"
               placeHolder="Enter tags"
             />
-
           </div>
 
           <div>
@@ -171,7 +169,6 @@ const AddProduct = () => {
           </button>
         </form>
       </main>
-      {/* <Footer /> */}
     </div>
   );
 };
