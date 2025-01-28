@@ -15,7 +15,7 @@ const AdminStatisticsPage = () => {
 
   useEffect(() => {
     // Fetch statistics from backend API
-    fetch("https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/admin/statistics")
+    fetch("https://product-hunt-client-server.vercel.app/admin/statistics")
       .then((res) => res.json())
       .then((data) => setStatistics(data))
       .catch((error) => console.error("Error fetching statistics:", error));

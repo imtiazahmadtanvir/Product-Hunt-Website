@@ -17,7 +17,7 @@ const ProductsPage = () => {
   const fetchProducts = async (page, searchTerm) => {
     try {
       setLoading(true);
-      const response = await axios.get(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/products`, {
+      const response = await axios.get(`https://product-hunt-client-server.vercel.app/products`, {
         params: {
           page,
           searchTerm,

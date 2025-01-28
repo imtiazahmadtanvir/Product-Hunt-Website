@@ -6,7 +6,7 @@ const ManageUsers = () => {
 
   useEffect(() => {
     // Fetch all users from the backend
-    fetch("https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/users")
+    fetch("https://product-hunt-client-server.vercel.app/users")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error("Error fetching users:", error));
@@ -24,7 +24,7 @@ const ManageUsers = () => {
   //   }).then((result) => {
   //     if (result.isConfirmed) {
   //       // Make API call to update the user role
-  //       fetch(`https://product-hunt-client-server-lowdsrgf0-imtiazs-projects-e3424ac1.vercel.app/users/${userId}/role`, {
+  //       fetch(`https://product-hunt-client-server.vercel.app/users/${userId}/role`, {
   //         method: "PATCH",
   //         headers: {
   //           "Content-Type": "application/json",
