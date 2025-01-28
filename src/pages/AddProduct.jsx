@@ -47,7 +47,7 @@ const AddProduct = () => {
     
     console.log(newFormData);
   
-    fetch("http://localhost:5000/add-product", {
+    fetch("https://product-hunt-client-server.vercel.app/add-product", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

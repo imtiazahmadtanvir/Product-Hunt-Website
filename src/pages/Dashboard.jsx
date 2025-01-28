@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/users/${user.email}`, {
+      fetch(`https://product-hunt-client-server.vercel.app/users/${user.email}`, {
         credentials: 'include',
       })
         .then(res => res.json())

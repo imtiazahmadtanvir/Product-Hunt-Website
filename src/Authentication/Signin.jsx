@@ -21,10 +21,10 @@ const Signin = () => {
           console.log('sign in' ,result.user.email);
 
           const  user ={ email: email }
-          // axios.post('https://historical-artifacts-tracker-server-blue.vercel.app/jwt', user ,{ withCredentials : true})
-          // .then(res=>{
-          //   console.log(res.data)
-          // })
+          axios.post('https://product-hunt-client-server.vercel.app/jwt', user ,{ withCredentials : true})
+          .then(res=>{
+            console.log(res.data)
+          })
         // Redirect to previous route or home
         navigate(location?.state?.from || "/");
       })
