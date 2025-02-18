@@ -11,28 +11,58 @@ const Register = () => {
   const [error, setError] = useState({});
 
   const handleGoogleSignUP = () => {
-    createUserWithGoogle()
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        setError((prev) => ({ ...prev, google: error.message }));
-      });
-    
-  };
+    // createUserWithGoogle()
+    //     .then((result) => {
+    //         const user = result.user;
 
-  createUserWithGoogle()
-  .then((result) => {
-    const userData = {
-      name: result.user.displayName,
-      email: result.user.email,
-      photo: result.user.photoURL,
-      role: "User",
-    };
-    axiosPublic.post("/users", userData).catch(console.error);
-    navigate("/");
-  })
-  .catch((error) => setError((prev) => ({ ...prev, google: error.message })));
+    //         // Check if the user already exists in the backend
+    //         return axiosPublic.get(`/users/email/${user.email}`)
+    //             .then((response) => {
+    //                 if (response.data.exists) {
+    //                     // User already exists, just log them in
+    //                     // SuccessToaster("Successfully Logged In with Google");
+    //                     navigate(location?.state ? location.state : "/");
+    //                 } else {
+    //                     // User doesn't exist, save their data to the backend
+    //                     const userData = {
+    //                         name: user.displayName,
+    //                         email: user.email,
+    //                         photo: user.photoURL,
+    //                         role: "User", // Default role for Google sign-ups
+    //                         createdAt: new Date().toISOString(),
+    //                     };
+
+    //                     return axiosPublic.post("/users", userData);
+    //                 }
+    //             });
+    //     })
+    //     .then((response) => {
+    //         if (response && response.data?.acknowledged) {
+    //             // SuccessToaster("Successfully Logged In with Google");
+    //             navigate(location?.state ? location.state : "/dashboard");
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.error("Google Sign-Up Error:", error.message);
+    //         setError((prevError) => ({
+    //             ...prevError,
+    //             google: "Google sign-up failed. Please try again.",
+    //         }));
+    //     });
+
+    createUserWithGoogle()
+    .then((result) => {
+      const userData = {
+        name: result.user.displayName,
+        email: result.user.email,
+        photo: result.user.photoURL,
+        role: "User",
+      };
+      axiosPublic.post("/users", userData).catch(console.error);
+      navigate("/");
+    })
+    .catch(error);
+};
 
 
   const handleSubmit = (e) => {

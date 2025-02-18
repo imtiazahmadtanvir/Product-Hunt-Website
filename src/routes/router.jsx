@@ -19,6 +19,7 @@ import UpdateProduct from "../pages/UpdateProduct";
 // import ProductsPage from "../pages/ProductsPage";
 import ProductDetails from "../pages/ProductDetails";
 import ReportedProducts from "../pages/ReportedProducts";
+import ProductsPage from "../pages/ProductsPage";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,12 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
+  // {
+  //   path: "edit/:id",
+  //   element: (
+  //   ),
+  //   errorElement: <ErrorPage />,
+  // },
   {
     path: "details/:id",
     element: (
@@ -40,24 +47,25 @@ const router = createBrowserRouter([
          <ProductDetails></ProductDetails>
    </PrivateRoute>
     ),
+    loader: ()=>fetch(`https://product-hunt-client-server.vercel.app/my-products`),
     errorElement: <ErrorPage />,
   },
   
-  {
-    path: "details/:id",
-    element: (
-        <UpdateProduct></UpdateProduct>
-    ),
-    errorElement: <ErrorPage />,
-  },
-   
   // {
-  //   path: "product",
+  //   path: "details/:id",
   //   element: (
-  //      <ProductsPage></ProductsPage>
+  //       <UpdateProduct></UpdateProduct>
   //   ),
   //   errorElement: <ErrorPage />,
   // },
+   
+  {
+    path: "product",
+    element: (
+    <ProductsPage></ProductsPage>
+    ),
+    errorElement: <ErrorPage />,
+  },
   {
     path:"dashboard",
     element: (

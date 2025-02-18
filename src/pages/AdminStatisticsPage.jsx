@@ -1,28 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
+// Register the necessary chart elements
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const AdminStatisticsPage = () => {
-  const [statistics, setStatistics] = useState({
-    totalProducts: 0,
-    acceptedProducts: 0,
-    pendingProducts: 0,
-    totalReviews: 0,
-    totalUsers: 0,
+  const [statistics] = useState({
+    totalProducts: 20,
+    acceptedProducts: 20,
+    pendingProducts: 34,
+    totalReviews: 10,
+    totalUsers: 20,
   });
 
-  useEffect(() => {
-    // Fetch statistics from backend API
-    fetch("https://product-hunt-client-server.vercel.app/admin/statistics")
-      .then((res) => res.json())
-      .then((data) => setStatistics(data))
-      .catch((error) => console.error("Error fetching statistics:", error));
-  }, []);
-
+  // Prepare chart data for the pie chart
   const chartData = {
-    labels: ["Accepted Products", "Pending Products", "All Products", "Reviews", "Users"],
+    labels: [
+      "Accepted Products",
+      "Pending Products",
+      "All Products",
+      "Reviews",
+      "Users",
+    ],
     datasets: [
       {
         label: "Site Statistics",
@@ -33,16 +33,28 @@ const AdminStatisticsPage = () => {
           statistics.totalReviews,
           statistics.totalUsers,
         ],
-        backgroundColor: ["#36A2EB", "#FF6384", "#FFCE56", "#4BC0C0", "#9966FF"],
-        hoverBackgroundColor: ["#36A2EB", "#FF6384", "#FFCE56", "#4BC0C0", "#9966FF"],
+        backgroundColor: [
+          "#36A2EB",
+          "#FF6384",
+          "#FFCE56",
+          "#4BC0C0",
+          "#9966FF",
+        ],
+        hoverBackgroundColor: [
+          "#36A2EB",
+          "#FF6384",
+          "#FFCE56",
+          "#4BC0C0",
+          "#9966FF",
+        ],
       },
     ],
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-xl font-bold mb-4">Admin Statistics</h2>
-      <div className="w-full max-w-3xl mx-auto">
+    <div className="container  mx-auto p-4">
+      <h2 className="text-xl text-black justify-center text-center font-bold mb-4">Admin Statistics</h2>
+      <div className="w-full lg:pt-10 max-w-3xl mx-auto">
         <Pie data={chartData} />
       </div>
     </div>

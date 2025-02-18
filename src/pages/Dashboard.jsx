@@ -32,14 +32,14 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="">
+    <div className="flex flex-col min-h-screen">
       <nav>
         <Navbar />
       </nav>
 
-      <div className="flex flex-1 min-h-screen">
+      <div className="flex flex-1 flex-col lg:flex-row">
         {/* Sidebar */}
-        <div className="w-1/4 bg-gray-800 text-white p-4 min-h-full">
+        <div className="w-full lg:w-1/4 bg-gray-800 text-white p-4 min-h-full lg:h-screen lg:sticky top-0">
           <h2 className="text-xl font-bold mb-4">Dashboard</h2>
           <ul className="space-y-2">
             {role === 'User' && (
@@ -100,7 +100,6 @@ const Dashboard = () => {
                     <span>Manage Coupons</span>
                   </Link>
                 </li>
-               
               </>
             )}
           </ul>
@@ -113,7 +112,7 @@ const Dashboard = () => {
       </div>
 
       {/* Footer */}
-      <footer className="">
+      <footer>
         <Footer />
       </footer>
     </div>

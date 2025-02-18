@@ -41,9 +41,10 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, updatedData);
   };
 
+  const provider = new GoogleAuthProvider();
+
   // Define the Google login function
   const createUserWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider);
   };
 

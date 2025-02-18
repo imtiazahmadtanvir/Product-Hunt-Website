@@ -5,6 +5,7 @@ import Swal from "sweetalert2"; // Import SweetAlert2
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const ProductReviewQueue = () => {
+  
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate(); // Initialize useNavigate
@@ -114,12 +115,13 @@ const ProductReviewQueue = () => {
             <tr key={product._id} className="border-b">
               <td className="border px-4 py-2">{product.productName}</td>
               <td className="border px-4 py-2">
-                <Link
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
-                  onClick={() => navigate(`/details/${product._id}`)}
-                  >
-                  View Details
-                </Link>
+              <Link
+                to={`/details/${product._id}`}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
+              >
+                View Details
+              </Link>
+
               </td>
 
              

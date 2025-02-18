@@ -24,9 +24,9 @@ const Navbar = () => {
         <Link to="/" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
           Home
         </Link>
-        <a href="#product" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
+        <Link to="/product" className="btn btn-ghost hover:bg-gray-300 dark:hover:bg-gray-700">
           Products
-        </a>
+        </Link>
 
       </div>
 
@@ -74,40 +74,43 @@ const Navbar = () => {
       </div>
 
 
-      {/* Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <div className="absolute top-[4rem] right-0 bg-gray-800 rounded-lg  dark:bg-gray-800 shadow-lg z-50 w-48">
-          <div className="flex flex-col items-start gap-2 p-4">
-            <Link to="/" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 ">
-              Home
-            </Link>
-            <a href="#product" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 dark:hover:bg-gray-700">
-              Product
-            </a>
+{/* Mobile Menu Dropdown */}
+{isMenuOpen && (
+  <div className="absolute top-[4rem] right-0 bg-gray-800 rounded-lg dark:bg-gray-800 shadow-lg z-50 w-48">
+    <div className="flex flex-col items-start gap-2 p-4">
+      
+      <p className="text-gray-300">{user ? user.displayName : ''}</p>
 
+      <Link to="/" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300">
+        Home
+      </Link>
+      <Link to="/product" className="btn btn-ghost w-full text-left bg-white hover:bg-gray-300 dark:hover:bg-gray-700">
+        Product
+      </Link>
 
-            {user ? (
-              <>
-                <Link to="/dashboard" className="btn btn-ghost bg-white w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
-                  Dashboard
-                </Link>
-                <button onClick={logOut} className="btn btn-primary w-full bg-yellow-400 hover:bg-yellow-500">
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/auth/login" className="btn btn-primary w-full text-center bg-yellow-400 hover:bg-yellow-500">
-                  Login
-                </Link>
-                <Link to="/auth/register" className="btn btn-primary w-full text-center bg-yellow-400 hover:bg-yellow-500">
-                  Register
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
+      {user ? (
+        <>
+          <Link to="/dashboard" className="btn btn-ghost bg-white w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
+            Dashboard
+          </Link>
+          <button onClick={logOut} className="btn btn-primary w-full bg-yellow-400 hover:bg-yellow-500">
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <Link to="/auth/login" className="btn btn-primary w-full text-center bg-yellow-400 hover:bg-yellow-500">
+            Login
+          </Link>
+          <Link to="/auth/register" className="btn btn-primary w-full text-center bg-yellow-400 hover:bg-yellow-500">
+            Register
+          </Link>
+        </>
       )}
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
