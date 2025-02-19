@@ -67,6 +67,12 @@ const Dashboard = () => {
             {role === 'Moderator' && (
               <>
                 <li>
+                  <Link to="/dashboard/my-profile" className="flex items-center space-x-2">
+                    <FaTicketAlt />
+                    <span>Profile</span>
+                 </Link>
+                </li>
+                <li>
                   <Link to="/dashboard/product-review-queue" className="flex items-center space-x-2">
                     <FaClipboardList />
                     <span>Product Review Queue</span>
@@ -82,6 +88,12 @@ const Dashboard = () => {
             )}
             {role === 'Admin' && (
               <>
+                <li>
+                  <Link to="/dashboard/my-profile" className="flex items-center space-x-2">
+                    <FaTicketAlt />
+                    <span>Profile</span>
+                  </Link>
+                </li>
                 <li>
                   <Link to="/dashboard/statistics" className="flex items-center space-x-2">
                     <FaChartBar />

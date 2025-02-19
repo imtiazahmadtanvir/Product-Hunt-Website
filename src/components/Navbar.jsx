@@ -87,7 +87,7 @@ const Navbar = () => {
 
                 {user ? (
                   <>
-                    <Link to="/dashboard" className="btn btn-ghost bg-white w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
+                    <Link to="/dashboard/my-profile" className="btn btn-ghost bg-white w-full text-left hover:bg-gray-300 dark:hover:bg-gray-700">
                       Dashboard
                     </Link>
                     <button onClick={logOut} className="btn btn-primary w-full bg-yellow-400 hover:bg-yellow-500">
