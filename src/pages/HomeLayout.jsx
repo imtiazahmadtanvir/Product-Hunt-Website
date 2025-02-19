@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 // import WhyPreservingHistory from "../components/WhyPreservingHistory";
 // import YourRoleInPreservingHistory from "../components/YourRoleInPreservingHistory";
 import { FaSun, FaMoon } from "react-icons/fa";
+import CommunityReviews from "../components/CommunityReviews";
 
 
 const HomeLayout = () => {
@@ -45,6 +46,8 @@ const HomeLayout = () => {
         <Banner></Banner>
         <FeaturedProducts></FeaturedProducts>
         <TrendingProducts></TrendingProducts>
+
+        <CommunityReviews></CommunityReviews>
         
       </header>
       {/* <FeaturedArtifacts></FeaturedArtifacts> */}
