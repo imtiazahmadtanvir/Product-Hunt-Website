@@ -13,6 +13,7 @@ import CommunityReviews from "../components/CommunityReviews";
 import BlogInsights from "../components/BlogInsights";
 import SuccessStories from "../components/SuccessStories";
 import JoinCommunity from "../components/JoinCommunity";
+import UpcomingLaunches from "../components/UpcomingLaunches";
 
 
 const HomeLayout = () => {
@@ -49,6 +50,7 @@ const HomeLayout = () => {
         <Banner></Banner>
         <FeaturedProducts></FeaturedProducts>
         <TrendingProducts></TrendingProducts>
+        <UpcomingLaunches></UpcomingLaunches>
         <JoinCommunity></JoinCommunity>
         <SuccessStories></SuccessStories>
         <BlogInsights></BlogInsights>
