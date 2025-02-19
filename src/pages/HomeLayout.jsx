@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import CommunityReviews from "../components/CommunityReviews";
 import BlogInsights from "../components/BlogInsights";
+import SuccessStories from "../components/SuccessStories";
+import JoinCommunity from "../components/JoinCommunity";
 
 
 const HomeLayout = () => {
@@ -47,6 +49,8 @@ const HomeLayout = () => {
         <Banner></Banner>
         <FeaturedProducts></FeaturedProducts>
         <TrendingProducts></TrendingProducts>
+        <JoinCommunity></JoinCommunity>
+        <SuccessStories></SuccessStories>
         <BlogInsights></BlogInsights>
         <CommunityReviews></CommunityReviews>
         
