@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 // import YourRoleInPreservingHistory from "../components/YourRoleInPreservingHistory";
 import { FaSun, FaMoon } from "react-icons/fa";
 import CommunityReviews from "../components/CommunityReviews";
+import BlogInsights from "../components/BlogInsights";
 
 
 const HomeLayout = () => {
@@ -46,7 +47,7 @@ const HomeLayout = () => {
         <Banner></Banner>
         <FeaturedProducts></FeaturedProducts>
         <TrendingProducts></TrendingProducts>
-
+        <BlogInsights></BlogInsights>
         <CommunityReviews></CommunityReviews>
         
       </header>
