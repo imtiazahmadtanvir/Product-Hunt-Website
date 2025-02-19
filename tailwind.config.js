@@ -5,20 +5,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        light: {
-          bg: '#ffffff',
-          text: '#000000',
-          primary: '#1d4ed8',
-          secondary: '#64748b',
-          border: '#e5e7eb',
-        },
-        dark: {
-          bg: '#18181b',
-          text: '#f9fafb',
-          primary: '#3b82f6',
-          secondary: '#94a3b8',
-          border: '#334155',
-        },
+        'light-bg': '#ffffff',
+        'light-text': '#000000',
+        'light-primary': '#1d4ed8',
+        'light-secondary': '#64748b',
+        'light-border': '#e5e7eb',
+
+        'dark-bg': '#18181b',
+        'dark-text': '#f9fafb',
+        'dark-primary': '#3b82f6',
+        'dark-secondary': '#94a3b8',
+        'dark-border': '#334155',
       },
     },
   },

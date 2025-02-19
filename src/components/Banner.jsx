@@ -11,7 +11,10 @@ import { Fade } from "react-awesome-reveal";
 const Banner = () => {
   return (
     <div className="w-11/12 lg:w-8/12 mx-auto">
-      <section id="banner" className="p-10 text-center text-gray-900">
+      <section
+        id="banner"
+        className="p-10 text-center text-gray-900 dark:bg-gray-900 dark:text-white transition-colors"
+      >
         {/* Swiper Slider for Banner */}
         <Swiper
           modules={[Autoplay]}
@@ -76,9 +79,11 @@ const Banner = () => {
         {/* Welcome Message */}
         <div className="max-w-3xl mx-auto">
           <div>
-            <h2 className="text-4xl sm:text-3xl font-extrabold mb-4 text-gray-900">
+            <h2 className="text-4xl sm:text-3xl font-extrabold mb-4 text-gray-900 dark:text-white">
               Welcome to{" "}
-              <span className="text-yellow-500">Product Hunt!</span>
+              <span className="text-yellow-500 dark:text-yellow-400">
+                Product Hunt!
+              </span>
             </h2>
 
             <Typewriter
@@ -97,7 +102,7 @@ const Banner = () => {
           </div>
 
           <Fade>
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
               Explore, upvote, and review amazing products curated by our 
               community of innovators and enthusiasts.
             </p>
@@ -106,7 +111,7 @@ const Banner = () => {
           {/* Explore Button */}
           <Link
             to="/dashboard"
-            className="bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-yellow-600 hover:text-gray-100 transition"
+            className="bg-yellow-500 dark:bg-yellow-600 text-gray-900 dark:text-white font-semibold px-6 py-3 rounded-lg hover:bg-yellow-600 dark:hover:bg-yellow-700 hover:text-gray-100 transition"
           >
             Start Exploring Now
           </Link>
